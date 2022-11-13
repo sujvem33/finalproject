@@ -1,11 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 // import { Link, useParams } from "react-router-dom";
-import { eachProduct } from "../utilities/products-service";
+import { eachProduct , deleteProduct} from "../utilities/products-service";
 import { Card, Button, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-function Detail({ cart, setCart, category }) {
+function Detail({ cart, setCart, page, setPage }) {
+  const navigate = useNavigate();
+  const { category } = useParams();
   const [eachproduct, seteachproduct] = useState({});
 
   const geteachProducts = async (category) => {
@@ -16,6 +19,15 @@ function Detail({ cart, setCart, category }) {
       list: productdetails.data.allProducts,
     });
   };
+
+
+  const deleteOneProduct = async (id) => {
+    await deleteProduct(id);
+    page === true ? setPage(false) : setPage(true);
+
+    // maybe redirect
+  };
+
 
   useEffect(() => {
     geteachProducts(category);
@@ -30,7 +42,16 @@ function Detail({ cart, setCart, category }) {
               <Card.Title>{element.name}</Card.Title>
               {/* <Card.Text>{element.description}</Card.Text>   */}
               <Card.Text>${element.price}</Card.Text>
-           
+              <Button
+                  className="delbutton"
+                  onClick={() => {
+                    deleteOneProduct(element._id);
+                    navigate("/home");
+                  }}
+                >
+                  DELETE
+                </Button>
+           <br/>
               <Button
                 variant="primary"
                 onClick={() => {
@@ -47,9 +68,15 @@ function Detail({ cart, setCart, category }) {
     : [];
 
   return (
+    <>
+    <br />
+    <a href="/api/products/:category/new" className="button">
+       Add New Product
+      </a>
     <Container className="d-flex p-3 justify-content-evenly flex-wrap">
       {productdetailList}
     </Container>
+    </>
   );
 }
 export default Detail;

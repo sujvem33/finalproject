@@ -58,11 +58,23 @@ export async function getOneProduct(category, id) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Invalid");
+    throw new Error("Invalid request");
   }
 }
 
+export async function updateProduct(category, id, productData) {
+  const res = await fetch(`${BASE_URL}/${category}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(productData),
+  });
 
+  if (res.ok) {
+    return res;
+  } else {
+    throw new Error("Invalid Update");
+  }
+}
 
 export async function deleteProduct(id) {
   const res = await fetch(`${BASE_URL}/${id}`, {

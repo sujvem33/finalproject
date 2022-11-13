@@ -31,14 +31,14 @@ function NavBar({ user, setUser, cart, setCategory, setSearchProducts }) {
       <Navbar bg="primary" variant={"primary"} className="Navbar">
         <Container className="wideBar">
           <div>
-          <Navbar.Brand as={Link} to="/api/products" >
+          <Navbar.Brand as={Link} to="/home" >
             <img src={logoImage} alt="logo" className="logo" />
             </Navbar.Brand>
           </div>
           <div> 
               <Search setSearchProducts={setSearchProducts} />
           </div>
-          <div> 
+          <div className="imagebox"> 
                 <Container className="userlogin">
                   {user ? (
                     <div className="userlogin">
@@ -60,14 +60,14 @@ function NavBar({ user, setUser, cart, setCategory, setSearchProducts }) {
                     </Nav.Link>
                   )}
                   </Container>
-                  </div>
-                <div>
+                  
                        <Nav.Link as={Link} to="/cart">
                        <img src={cartImage} alt="logo" className="cartImage" />
                        </Nav.Link>
                        <Navbar.Text>{cart.length}</Navbar.Text>
                 </div>
         </Container>
+        <hr/>
         <Container className="categorybar">
         <Nav.Link
                 as={Link}

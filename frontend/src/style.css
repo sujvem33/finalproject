@@ -202,8 +202,8 @@ body {
   height: 30px;
 }
 .cartImage{
-  width: 25px;
-  height: 15px;
+  width: 35px;
+  height: 25px;
 }
 
 
@@ -224,8 +224,14 @@ body {
 }
 
 .wideBar{
+  top: 20px;
   display: flex;
   flex-direction: row;
   justify-content:safe;
 }
 
+.imagebox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

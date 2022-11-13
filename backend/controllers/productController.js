@@ -52,8 +52,6 @@ exports.getProducts = async (request, response) => {
 exports.searchProducts = async (request, response) => {
   try {
     let searchTerm = request.params.searchTerm;
-
-    // console.log(category);
     const searchProducts = await Product.find({
       $or: [
         { name: { $regex: searchTerm, $options: "i" } },
@@ -121,8 +119,6 @@ exports.getOneProduct = async (request, response) => {
     if (!OneProduct) {
       throw new Error("Product Not Found");
     }
-
-    // Send response
     response.status(200).json({
       status: "success",
       data: {
@@ -133,6 +129,26 @@ exports.getOneProduct = async (request, response) => {
     response.status(404).json({
       status: "fail",
       message: error.message,
+    });
+  }
+};
+
+
+exports.updateProduct = async (request, response) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      request.params.id,
+      request.body
+    );
+
+    response.status(201).json({
+      status: "success",
+      data: {updatedProduct},
+    });
+  } catch (error) {
+    response.status(500).json({
+      status: "error",
+      error: error,
     });
   }
 };

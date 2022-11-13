@@ -1,8 +1,6 @@
 // APP.js
 import "./App.css";
-import NewOrderPage from "./pages/NewOrderPage";
 import AuthPage from "./pages/AuthPage";
-import OrderHistoryPage from "./pages/OrderHistoryPage";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams, Navigate } from "react-router-dom";
 import { getUser } from "./utilities/users-service";
@@ -14,6 +12,8 @@ import CartPage from "./pages/CartPage";
 import SearchPage from "./pages/SearchPage";
 import SignupPage from "./pages/SignUpPage";
 import PaymentForm from "./pages/PaymentForm";
+import NewProductPage from "./pages/NewProductPage";
+import HomePage from "./pages/HomePage";
 
 
 // Create App component.
@@ -44,9 +44,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Navigate replace to="/api/products" />} />
-
-          <Route path="/orders/new/:id" element={<NewOrderPage />} />
-          <Route path="/orders" element={<OrderHistoryPage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route
             path="/login"
             element={<AuthPage setUser={setUser} user={user} />}
@@ -62,6 +60,11 @@ function App() {
           <Route
             path="/api/products/:category"
             element={<Detail setCart={setCart} cart={cart} category={category} />}
+          />
+          
+          <Route
+            path="/api/products/:category/new"
+            element={<NewProductPage />}
           />
           <Route
             path="/cart"

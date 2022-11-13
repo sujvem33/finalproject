@@ -27,6 +27,11 @@ export async function getOneProduct(category, id) {
   return response;
 }
 
+export async function updateProduct(category, id, productData) {
+  const response = await productsAPI.updateProduct(category, id, productData);
+  return response;
+}
+
 export async function deleteProduct(id) {
   const response = await productsAPI.deleteProduct(id);
   console.log(response);

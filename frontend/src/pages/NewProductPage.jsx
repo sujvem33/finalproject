@@ -73,8 +73,7 @@ function NewProductPage() {
           return handleFormSubmission(e);
         }}
       >
-        <h1>Add New Product </h1>
-
+       
         <form autoComplete="off">
           <label>Product Name</label>
           <input
@@ -87,7 +86,7 @@ function NewProductPage() {
             required
             placeholder="Name"
           />
-          <label>image Link</label>
+          <label>Image Address</label>
           <input
             type="text"
             name="image"
@@ -97,8 +96,7 @@ function NewProductPage() {
             value={image}
             placeholder="image Link"
           />
-          <label>Category</label>
-
+         
           <input
             type="radio"
             id="coords"
@@ -205,15 +203,13 @@ function NewProductPage() {
           />
           <label>Price</label>
           <input
-            type="number"
+            type="text"
             name="price"
             onChange={(e) => {
               return handlePriceChange(e);
             }}
             value={price}
-            required
-            placeholder="Confirm Password"
-            min="0"
+            required   
           />
 
           <button type="submit">Add Product</button>
