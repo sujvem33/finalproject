@@ -1,0 +1,92 @@
+// APP.js
+import "./App.css";
+import NewOrderPage from "./pages/NewOrderPage";
+import AuthPage from "./pages/AuthPage";
+import OrderHistoryPage from "./pages/OrderHistoryPage";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useParams, Navigate } from "react-router-dom";
+import { getUser } from "./utilities/users-service";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import Detail from "./pages/Detail";
+import Allproducts from "./pages/AllProducts";
+import CartPage from "./pages/CartPage";
+import SearchPage from "./pages/SearchPage";
+import SignupPage from "./pages/SignUpPage";
+import PaymentForm from "./pages/PaymentForm";
+
+
+// Create App component.
+function App() {
+  // Variable to hold the state of the component.
+  const [user, setUser] = useState(getUser());
+  const [cart, setCart] = useState([]);
+  const [category, setCategory] = useState({});
+
+  // search page products
+  const [searchProducts, setSearchProducts] = useState(null);
+
+  const params = useParams();
+  const categoryparams = params.category;
+  useEffect(() => {
+    setCategory(categoryparams);
+  }, []);
+
+  return (
+    <div className="App">
+      <>
+        <NavBar
+          user={user}
+          setUser={setUser}
+          cart={cart}
+          setCategory={setCategory}
+          setSearchProducts={setSearchProducts}
+        />
+        <Routes>
+          <Route path="/" element={<Navigate replace to="/api/products" />} />
+
+          <Route path="/orders/new/:id" element={<NewOrderPage />} />
+          <Route path="/orders" element={<OrderHistoryPage />} />
+          <Route
+            path="/login"
+            element={<AuthPage setUser={setUser} user={user} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignupPage setUser={setUser} user={user} />}
+          />
+          <Route
+            path="/api/products"
+            element={<Allproducts setCart={setCart} cart={cart} />}
+          />
+          <Route
+            path="/api/products/:category"
+            element={<Detail setCart={setCart} cart={cart} category={category} />}
+          />
+          <Route
+            path="/cart"
+            element={<CartPage cart={cart} setCart={setCart} />}
+          />
+          {/* search page route */}
+          <Route
+            path="/api/products/search/:searchTerm"
+            element={
+              <SearchPage
+                setCart={setCart}
+                cart={cart}
+                searchTerm={searchProducts}
+              />
+            }
+          />
+          <Route
+            path="/payments"
+            element={<PaymentForm cart={cart} setCart={setCart} />}
+          />
+        </Routes>
+        <Footer />
+      </>
+    </div>
+  );
+}
+
+export default App;
