@@ -69,13 +69,13 @@ function NewProductPage() {
     <div className="newPage">
       <h4>New Product Page</h4>
       <div
-        className="form-container"
+        className="form-container "
         onSubmit={(e) => {
           return handleFormSubmission(e);
         }}
       >
        
-        <form autoComplete="off">
+        <form autoComplete="off" className="newproduct">
           <label>Product Name</label>
           <input
             type="text"

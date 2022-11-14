@@ -83,7 +83,7 @@ body {
     font-size: 2vmin;
   }
   
-  .form-container {
+  .loginform {
     padding-top:1%;
     background-color: #fefefe;
     margin: 5% auto 15% auto; 
@@ -248,12 +248,15 @@ body {
   margin: 10px;
 }
 
-form {
+.newproduct {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1px;
+  border: solid 1px #f1f1f1;
+  width: 100%;
+  background-color: rgb(237, 237, 245);
   
 }
   .formItem {
@@ -297,10 +300,16 @@ form {
      
     }
     
-
+    form {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 1.25vmin;
+      color: var(--text-light);
+    }
     .formsearch{
       display: flex;
       flex-direction: row;
+    flex-direction: row;
     }
 h4{
       font-style: italic;

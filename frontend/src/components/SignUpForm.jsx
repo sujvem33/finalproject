@@ -62,7 +62,7 @@ const SignUpForm = ({ setUser }) => {
   // Render component
   return (
     <div>
-      <div className="form-container">
+      <div className="form-container loginform">
         <h1>Sign Up</h1>
         <form
           className="authForm"

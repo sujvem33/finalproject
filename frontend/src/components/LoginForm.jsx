@@ -41,7 +41,7 @@ const LoginForm = ({ setUser }) => {
   return (
     <div>
       <div
-        className="form-container"
+        className="form-container loginform"
         onSubmit={(e) => {
           return handleFormSubmission(e);
         }}
