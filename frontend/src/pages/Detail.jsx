@@ -5,33 +5,40 @@ import { eachProduct , deleteProduct} from "../utilities/products-service";
 import { Card, Button, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { updateProduct, getOneProduct } from "../utilities/products-service";
 
-function Detail({ cart, setCart, page, setPage }) {
+function Detail({ cart, setCart, display , setDisplay }) {
   const navigate = useNavigate();
   const { category } = useParams();
+  const { id } = useParams();
   const [eachproduct, seteachproduct] = useState({});
 
   const geteachProducts = async (category) => {
-   
     const productdetails = await eachProduct(category);
-
     seteachproduct({
       list: productdetails.data.allProducts,
     });
   };
 
+  
+  const [product, setProduct] = useState({});
+
+  const getProduct = async (e) => {
+    const singleProduct = await getOneProduct(category, id);
+    setProduct(singleProduct.data.products[0]);
+  };
 
   const deleteOneProduct = async (id) => {
     await deleteProduct(id);
-    page === true ? setPage(false) : setPage(true);
-
-    // maybe redirect
+    display === true ? setDisplay(false) : setDisplay(true);
   };
 
 
   useEffect(() => {
     geteachProducts(category);
   }, [category]);
+
+
 
   const productdetailList = eachproduct.list
     ? eachproduct.list.map((element) => {
@@ -40,8 +47,19 @@ function Detail({ cart, setCart, page, setPage }) {
             <Card.Img variant="top" src={`${element.image}`} />
             <Card.Body className="d-flex flex-column justify-content-center align-items-center">
               <Card.Title>{element.name}</Card.Title>
-              {/* <Card.Text>{element.description}</Card.Text>   */}
-              <Card.Text>${element.price}</Card.Text>
+              <Card.Text>{element.description}</Card.Text>  
+              <Card.Text>₹{element.price}</Card.Text>
+              
+           <br/>
+           <Button
+              className="btn"
+              id="edit"
+              onClick={() => {
+                navigate(`/${category}/${element._id}/update`);
+              }}>
+              Edit Product
+            </Button>
+            <br/>
               <Button
                   className="delbutton"
                   onClick={() => {
@@ -49,7 +67,7 @@ function Detail({ cart, setCart, page, setPage }) {
                     navigate("/home");
                   }}
                 >
-                  DELETE
+                  Delete Product
                 </Button>
            <br/>
               <Button
@@ -69,10 +87,12 @@ function Detail({ cart, setCart, page, setPage }) {
 
   return (
     <>
+    
     <br />
     <a href="/api/products/:category/new" className="button">
        Add New Product
       </a>
+
     <Container className="d-flex p-3 justify-content-evenly flex-wrap">
       {productdetailList}
     </Container>

@@ -24,7 +24,7 @@ export async function createOneProduct(productData) {
 
 export async function getOneProduct(category, id) {
   const response = await productsAPI.getOneProduct(category, id);
-  return response;
+  return response.data.OneProduct;
 }
 
 export async function updateProduct(category, id, productData) {

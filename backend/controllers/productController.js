@@ -114,7 +114,7 @@ exports.createOneProduct = async (request, response) => {
 
 exports.getOneProduct = async (request, response) => {
   try {
-    const OneProduct = await Product.find({ _id: request.params.id });
+    const OneProduct = await Product.findOne({ _id: request.params.id });
 
     if (!OneProduct) {
       throw new Error("Product Not Found");
@@ -124,7 +124,9 @@ exports.getOneProduct = async (request, response) => {
       data: {
         OneProduct
       },
+    
     });
+    console.log(OneProduct);
   } catch (error) {
     response.status(404).json({
       status: "fail",

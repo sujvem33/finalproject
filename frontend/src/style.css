@@ -235,3 +235,74 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+
+  .newPage {
+    padding: 15px;
+    min-height: 150vh;
+    height: 100%;
+}
+
+.cartContainer{
+  border: solid 2px #f1f1f1;
+  margin: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  
+}
+  .formItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+  }
+    .formItemName {
+      
+      width: 100px;
+      font-size: 20px;
+    
+  }
+    .formItemContent {
+     
+      width: 450px;
+    }
+
+#radio {
+      display: flex;
+      align-items: center;
+      gap: 1px;
+      font-size: 1px;
+      flex-wrap: wrap;
+      border-radius: 1px;
+    }
+
+    input {
+      height: 30px;
+      font-size: 10px;
+      padding-left: 10px;
+      border-radius: 8px;
+    }
+
+    textarea {
+      height: 30px;
+      font-size: 5px;
+      padding: 10px;
+      border-radius: 1px;
+     
+    }
+    
+
+    .formsearch{
+      display: flex;
+      flex-direction: row;
+    }
+h4{
+      font-style: italic;
+      
+    }

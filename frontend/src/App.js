@@ -14,6 +14,7 @@ import SignupPage from "./pages/SignUpPage";
 import PaymentForm from "./pages/PaymentForm";
 import NewProductPage from "./pages/NewProductPage";
 import HomePage from "./pages/HomePage";
+import EditPage from "./pages/EditPage";
 
 
 // Create App component.
@@ -61,7 +62,7 @@ function App() {
             path="/api/products/:category"
             element={<Detail setCart={setCart} cart={cart} category={category} />}
           />
-          
+          <Route path="/:category/:id/update" element={<EditPage />} />
           <Route
             path="/api/products/:category/new"
             element={<NewProductPage />}

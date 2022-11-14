@@ -20,7 +20,7 @@ function Search({ setSearchProducts }) {
   };
   return (
     <>
-      <Form className="d-flex" onSubmit={handleFormSubmission}>
+      <Form className="d-flex formsearch" onSubmit={handleFormSubmission}>
         {/* <div width="2000">dff</div> */}
         <Form.Control
           type="search"

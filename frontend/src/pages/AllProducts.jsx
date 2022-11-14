@@ -28,8 +28,8 @@ function Allproducts({ cart, setCart }) {
             <Card.Img variant="top" src={element.image} />
             <Card.Body className="d-flex flex-column justify-content-center align-items-center">
               <Card.Title>{element.name}</Card.Title>
-              {/* <Card.Text>{element.description}</Card.Text>  */}
-              <Card.Text>${element.price}</Card.Text>
+              <Card.Text>{element.description}</Card.Text> 
+              <Card.Text>₹{element.price}</Card.Text>
               
               <Button
                 variant="primary"

@@ -84,15 +84,15 @@ function CartPage({ cart, setCart }) {
   const load = () => {
     return (
       <>
-        <br />
-        <br />
-        <h4> </h4>
+      <div className="cartContainer">
+      
         <br />
         <div>
           <div>{productList}</div>
         </div>
+        </div>
         <h2>
-          Total Price: $
+          Total Price: ₹
           {cart.reduce((total, element) => total + parseInt(element.price), 0)}
         </h2>
         <br /> <br />
@@ -100,15 +100,6 @@ function CartPage({ cart, setCart }) {
           Proceed to Check Out
         </a>
         <br />
-        <br />
-        {/* <h5> Payment Method</h5>
-        <div className="buttons">
-          <GooglePayButton
-            buttonType="short"
-            paymentRequest={paymentRequest}
-            onLoadPaymentData={handleLoadPaymentData}
-          />
-        </div> */}
         <br />
       </>
     );

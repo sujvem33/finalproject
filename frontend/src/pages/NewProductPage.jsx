@@ -67,6 +67,7 @@ function NewProductPage() {
   };
   return (
     <div className="newPage">
+      <h4>New Product Page</h4>
       <div
         className="form-container"
         onSubmit={(e) => {
@@ -94,9 +95,9 @@ function NewProductPage() {
               return handleimageChange(e);
             }}
             value={image}
-            placeholder="image Link"
+            placeholder="Image Address"
           />
-         
+         <h4>Select Category</h4>
           <input
             type="radio"
             id="coords"
@@ -211,7 +212,7 @@ function NewProductPage() {
             value={price}
             required   
           />
-
+<br/>
           <button type="submit">Add Product</button>
         </form>
       </div>
