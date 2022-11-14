@@ -1,13 +1,15 @@
-Indian Attire e-commerce Full Mern App!!
+**Indian Attire e-commerce Full Mern App!!**
 
-Technologies Used :
+**Technologies Used :**
+
 React JS
 MongoDB
 Node js
 Javascript
 Boostrap
 
-About IndianAttire Co :
+**About IndianAttire Co :**
+
 1.Shopping app to shop online clothing for women.
 
 2.Users can browse through different categories and select products, add products to cart, and purchase the products.
