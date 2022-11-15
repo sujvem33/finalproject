@@ -69,13 +69,14 @@ function NewProductPage() {
     <div className="newPage">
       <h4>New Product Page</h4>
       <div
-        className="form-container "
+        className="form-container newcontainer"
         onSubmit={(e) => {
           return handleFormSubmission(e);
         }}
       >
        
         <form autoComplete="off" className="newproduct">
+        <br/>
           <label>Product Name</label>
           <input
             type="text"
@@ -212,8 +213,9 @@ function NewProductPage() {
             value={price}
             required   
           />
-<br/>
+          <br/>
           <button type="submit">Add Product</button>
+          
         </form>
       </div>
 

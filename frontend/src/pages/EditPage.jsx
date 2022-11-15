@@ -72,14 +72,16 @@ function EditPage() {
       <br/>
        <h4>Product Update Page</h4>
       <div
-        className="form-container "
+        className="form-container newcontainer"
         onSubmit={(e) => {
           return handleFormSubmission(e);
         }}>
        
-
+       
         <form autoComplete="off" className="newproduct">
+        <br/>
           <div className="formItem">
+          
             <label className="formItemName">Name</label>
             <input
               type="text"
@@ -203,7 +205,7 @@ function EditPage() {
               className="formItemContent"
             />
           </div>
-          
+          <br/>
           <div className="formItem">
             <label className="formItemName">Price</label>
             <input
