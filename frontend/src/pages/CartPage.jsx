@@ -59,7 +59,7 @@ function CartPage({ cart, setCart }) {
             <div className="cartcomponents">
               <div className="cartnamedisplay">{element.name}</div>
               <div>{element.color}</div>
-              <div>${element.price}</div>
+              <div>₹{element.price}</div>
               <button
                 className="cartbutton"
                 onClick={() => handleRemove(element)}
